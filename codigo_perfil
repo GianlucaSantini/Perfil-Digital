@@ -1,0 +1,33 @@
+import csv
+
+series = {}
+num = int(input("Escribe un numero: "))                                         #El top que queres ver
+with open('NetflixViewingHistory.csv', encoding="utf8") as csv_file:            #Abro el archivo.csv
+  csv_reader = csv.reader(csv_file, delimiter = ',')                            #Lo vuelvo legible y divido en "Columnas" 1 de episodios y otras de fechas
+  for fila in csv_reader:                                                       #Itereo por cada fila en el csv
+    episodio = fila[0]                                                          #Guardo en episodio la "Columna" de episodios
+    episodioDatos = episodio.split(":")                                         # "Spliteo" el titulo de la fila en cada caracter ":", obtengo una lista y la guardo en episodioDatos
+    serie = str(episodioDatos[0])                                               #Guardo en serie el titulo de la serie
+    if (serie in series):                                                       #Si en el diccionario series se encuetra el titulo de la serie
+      series[serie]+=1                                                          #Suma 1 a la value del nombre serie
+    else:
+     series[serie]=1                                                            #Si no se encontraba, iguala a 1 la value del nombre serie
+
+#print(series)
+sorted_values = sorted(series.values())                                         #Ordena los valores de series
+#print(sorted_values)                                         
+sorted_series = {}
+for i in sorted_values:                                                         #Itereo por todos los valores en la lista sorteados
+    for k in series.keys():                                                     #Itereo por cada key en series
+        if series[k] == i:                                                      #Si la key en series es igual al valor i
+            sorted_series[k] = series[k]                                        #Entonces la key en sorted_series va a ser igual a la key en series
+            break
+x = len(sorted_series)                                                          
+v = list(sorted_series)
+sorted_v = v[::-1]
+#print(x)
+#print(v)
+#print(sorted_v)
+#print(sorted_v[num - 1])
+#print(series[str(sorted_v[0])])
+print("La serie en la posicion " +str(num)+" de vistas es: " +str(sorted_v[num - 1])+" con " +str(series[str(sorted_v[num - 1])])+" Capitulos vistos.")
