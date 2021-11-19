@@ -30,4 +30,4 @@ sorted_v = v[::-1]
 #print(sorted_v)
 #print(sorted_v[num - 1])
 #print(series[str(sorted_v[0])])
-print("La serie en la posicion " +str(num)+" de vistas es: " +str(sorted_v[num - 1])+" con " +str(series[str(sorted_v[num - 1])])+" Capitulos vistos.")
+print("La serie en la posicion " +str(num)+" es: " +str(sorted_v[num - 1])+" con " +str(series[str(sorted_v[num - 1])])+" Capitulos vistos.")
